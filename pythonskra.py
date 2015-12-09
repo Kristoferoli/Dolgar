@@ -21,8 +21,9 @@ conn = psycopg2.connect(conn_string)
 cursor = conn.cursor()
 
 print("Connected!\n")
-thesqlcommands = open('movies_demo.dat','r')
-
-for line in thesqlcommands:
-    print(line)
-
+thesqlcommands = open('movies.dat','r') #moguleiki ad tad turfi ad breyta slodinni
+for i in thesqlcommands:
+    index = int(i.split('::',1)[0])
+    Title = i.strip('::').split('::',2)[1]
+    Genre = i.split('::',2)[2].strip().split('|')
+    print([index], [Title], Genre)
